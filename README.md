@@ -104,7 +104,6 @@ Clone the repository:
 
 ```bash
 git clone https://github.com/marconaccini/CAN-Bus-Data-Analyzer.git
-cd <repo>
 ```
 
 (Optional) create a virtual environment:
