@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Data Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<header>
+    <div class="header-info">
+        <h1>CSV Data Analyzer</h1>
+        <p>Signals analyzer tool. Support complex timestamp and advanced filtering with wildchars (<code>*</code> e <code>?</code>).</p>    
+    </div>
+    <div class="header-upload">
+        <label for="csvFileInput" class="custom-file-upload">
+            Select CSV File
+        </label>
+        <input type="file" id="csvFileInput" accept=".csv">
+        <span id="fileStatus">No file selected</span>
+    </div>
+</header>
+
+    <main class="container">
+        <aside class="sidebar">
+            <h3>Segnali</h3>
+            <input type="text" id="filterInput" placeholder="Filter using wildcards...">
+            <div id="signalList" class="scroll-area">
+                </div>
+        </aside>
+
+        <section class="content">
+            <div class="chart-container">
+                <canvas id="signalChart"></canvas>
+            </div>
+
+            <div class="table-container">
+<table id="dataTable">
+    <thead>
+        <tr>
+            <th>Signal Name</th>
+            <th>Physical Value</th>
+            <th>Raw Value</th>
+            <th>Unit</th>
+            <th>Action</th> </tr>
+    </thead>
+    <tbody id="tableBody">
+        </tbody>
+</table>
+            </div>
+
+        <div class="controls">
+            <div class="slider-group">
+                <label>
+                    <strong>Sample:</strong> <span id="sampleIndexDisplay">0</span> - 
+                    <strong>Instant:</strong> <span id="currentTimeDisplay">-</span>
+                </label>
+                <input type="range" id="timeSlider" min="0" max="0" step="1" value="0">
+            </div>
+            
+            <div class="input-group">
+                <button id="prevBtn">◀ Previous</button>
+                <input type="number" id="sampleInput" placeholder="Sample Number..." min="0">
+                <button id="nextBtn">Next ▶</button>
+                <span style="margin-left: 10px; color: #666; font-size: 0.9em;">(Enter index and press Enter)</span>
+            </div>
+        </div>
+
+        <div class="event-search-bar">
+            <select id="searchSignalSelect">
+                <option value="">Select signal for search...</option>
+            </select>
+            <select id="searchType">
+                <option value="change">Value Change</option>
+                <option value="equal">Equal to...</option>
+                <option value="greater">Greater than...</option>
+                <option value="less">Less than...</option>
+            </select>
+            <input type="text" id="searchValue" placeholder="Value..." style="width: 80px;" value="0" >
+            <button id="findPrevBtn">▲ Prev.</button>
+            <button id="findNextBtn">▼ Next</button>
+        </div>
+
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
